@@ -1,4 +1,9 @@
-frontend/target/*
+backend/.iml
 backend/target/*
+frontend/.iml
+frontend/target/*
 frontend/src/main/frontend/node/*
 frontend/src/main/frontend/node_modules/*
+.idea/*
+.mvn/*
+.iml
