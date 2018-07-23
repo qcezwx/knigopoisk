@@ -4,7 +4,7 @@ import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
-import { AppRoutingModule } from "./routing/routing.module";
+import { RoutingModule } from "./routing/routing.module";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
@@ -16,7 +16,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
+    RoutingModule,
     HttpClientModule
   ],
   providers: [HttpClient],

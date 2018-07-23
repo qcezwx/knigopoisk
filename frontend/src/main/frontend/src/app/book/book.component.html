@@ -1,2 +1,7 @@
-<h2>Trying to fetch test book...</h2>
-<div *ngIf="book">{{book.id}}</div>
+<h2>Trying to fetch test books</h2>
+<p>My books: </p>
+<ul>
+  <li *ngFor="let book of books">
+    <div *ngIf="book">{{book.id}}, {{book.title}}</div>
+  </li>
+</ul>

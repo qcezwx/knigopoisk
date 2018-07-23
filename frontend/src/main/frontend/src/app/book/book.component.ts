@@ -8,17 +8,14 @@ import {Book} from "./book";
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
-  book: Book;
+  books: Book[];
 
   constructor(private bookService: BookService) { }
 
   submit() {
-    this.bookService.postData(this.book)
-      .subscribe(
-        (data: Book) => {
-          this.book = data;
-        },
-        error => console.log(error)
+    this.bookService.getData()
+      .subscribe((books) => this.books = books,
+        (error) => console.log(error)
       );
   }
 
