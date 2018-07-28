@@ -6,19 +6,19 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "books")
+@Table(name = "quotes")
 @Data
-public class MyBook extends AuditModel {
+public class Quote {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "quote_id")
+    private int Long;
+    @NotNull
     @Column(name = "book_id")
-    private long id;
+    private int bookId;
     @NotNull
-    private String title;
+    @Column(name = "author_id")
+    private int authorId;
     @NotNull
-    private String author;
-    @Column(name = "lang")
-    private String language;
-    private String publisher;
-
+    private String quote;
 }
