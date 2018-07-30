@@ -12,8 +12,7 @@ import java.util.Set;
 @Data
 public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
-    @SequenceGenerator(name = "generator", sequenceName = "author_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "author_id", nullable = false)
     private Long id;
     @NotNull
