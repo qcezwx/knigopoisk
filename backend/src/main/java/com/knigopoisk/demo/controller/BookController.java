@@ -16,9 +16,4 @@ public class BookController {
 
     @RequestMapping(value = "/book", method = RequestMethod.GET)
     public List<Book> getListOfBooks() { return bookRepository.findAll(); }
-
-//    @RequestMapping(value = "/book", method = RequestMethod.GET)
-//    public Page<Book> getBooks(Pageable pageable) {
-//        return BookRepository.findAll(pageable);
-//    }
 }

@@ -1,7 +1,10 @@
 <h2>Trying to fetch test books</h2>
 <p>My books: </p>
 <ul>
-  <li *ngFor="let book of books">
-    <div *ngIf="book">{{book.id}}, {{book.title}}</div>
+  <li *ngFor="let book of books"
+    [class.selected] = "book === selectedBook"
+    (click) = "onSelect(book)"> {{book.title}}
   </li>
 </ul>
+
+<app-book-detail [book] = "selectedBook"></app-book-detail>

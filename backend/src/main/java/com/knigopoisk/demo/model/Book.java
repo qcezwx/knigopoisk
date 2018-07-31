@@ -1,5 +1,6 @@
 package com.knigopoisk.demo.model;
 
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "books")
 @Data
+
 public class Book extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -23,7 +25,8 @@ public class Book extends AuditModel {
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "book_genre",
             joinColumns = { @JoinColumn(name = "book_id") },
@@ -37,6 +40,8 @@ public class Book extends AuditModel {
     private int rating;
     @Column(name = "total_values")
     private float totalValues;
+
+    public Book() {}
 
     public Book(@NotNull String title, @NotNull Author author, Set<Genre> genres, Date publicationDate, String language, int rating, float totalValues) {
         this.title = title;

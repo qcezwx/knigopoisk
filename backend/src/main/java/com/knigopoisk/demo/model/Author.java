@@ -1,16 +1,20 @@
 package com.knigopoisk.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Table(name = "authors")
 @Data
-public class Author {
+
+public class Author implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "author_id", nullable = false)
@@ -22,6 +26,7 @@ public class Author {
     @Column(name = "death_date")
     private Date deathDate;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "author", targetEntity = Book.class, cascade = CascadeType.ALL)
     private Set<Book> books;
 

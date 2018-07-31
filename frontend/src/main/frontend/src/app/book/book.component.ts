@@ -9,8 +9,13 @@ import {Book} from "./book";
 })
 export class BookComponent implements OnInit {
   books: Book[];
+  selectedBook: Book;
 
   constructor(private bookService: BookService) { }
+
+  onSelect(book: Book): void {
+    this.selectedBook = book;
+}
 
   submit() {
     this.bookService.getData()
