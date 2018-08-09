@@ -12,7 +12,7 @@ public class Quote {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "quote_id")
-    private int Long;
+    private Long id;
     @NotNull
     @Column(name = "book_id")
     private int bookId;

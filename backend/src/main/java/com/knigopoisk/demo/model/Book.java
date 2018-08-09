@@ -1,6 +1,5 @@
 package com.knigopoisk.demo.model;
 
-import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -25,25 +24,25 @@ public class Book extends AuditModel {
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
-    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "book_genre",
-            joinColumns = { @JoinColumn(name = "book_id") },
-            inverseJoinColumns = { @JoinColumn(name = "genre_id") }
+            joinColumns = {@JoinColumn(name = "book_id")},
+            inverseJoinColumns = {@JoinColumn(name = "genre_id")}
     )
     private Set<Genre> genres = new HashSet<Genre>();
     @Column(name = "publication_date")
     private Date publicationDate;
     @Column(name = "lang")
     private String language;
-    private int rating;
+    private float rating;
     @Column(name = "total_values")
-    private float totalValues;
+    private int totalValues;
 
-    public Book() {}
+    public Book() {
+    }
 
-    public Book(@NotNull String title, @NotNull Author author, Set<Genre> genres, Date publicationDate, String language, int rating, float totalValues) {
+    public Book(@NotNull String title, @NotNull Author author, Set<Genre> genres, Date publicationDate, String language, float rating, int totalValues) {
         this.title = title;
         this.author = author;
         this.genres = genres;

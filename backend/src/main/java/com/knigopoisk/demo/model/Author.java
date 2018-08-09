@@ -1,7 +1,6 @@
 package com.knigopoisk.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -30,7 +29,8 @@ public class Author implements Serializable {
     @OneToMany(mappedBy = "author", targetEntity = Book.class, cascade = CascadeType.ALL)
     private Set<Book> books;
 
-    public Author(){}
+    public Author() {
+    }
 
     public Author(@NotNull String fullname, Date birthDate, Date deathDate) {
         this.fullname = fullname;
