@@ -8,7 +8,7 @@ import {BookDetailComponent} from "../book-detail/book-detail.component";
 
 const routes: Routes = [
   { path: 'book', component: BookComponent },
-  { path: 'book/:id', component: BookDetailComponent},
+  { path: 'book/:title', component: BookDetailComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent }
 ];

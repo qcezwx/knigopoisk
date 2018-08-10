@@ -1,25 +1,25 @@
-<mat-toolbar color = "primary">
+<mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-button>
-      <a [routerLink] = "['/home']">{{title}}</a>
+      <a [routerLink]="['/home']">{{title}}</a>
     </button>
 
-    <span class = "mat-toolbar-spacer"></span>
+    <span class="mat-toolbar-spacer"></span>
 
     <button mat-button>Что почитать?</button>
     <button mat-button>
-      <a [routerLink] = "['/authors']">Авторы</a>
+      <a [routerLink]="['/authors']">Авторы</a>
     </button>
-    <button mat-button [matMenuTriggerFor] = "books">Книги</button>
+    <button mat-button [matMenuTriggerFor]="books">Книги</button>
 
-    <mat-menu #books = "matMenu">
-      <button mat-menu-item [matMenuTriggerFor] = "topByGenre">Топ жанра</button>
+    <mat-menu #books="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="topByGenre">Топ жанра</button>
       <button mat-menu-item>
-        <a [routerLink] = "['/book']">Топ 100</a>
+        <a [routerLink]="['/book']">Топ 50</a>
       </button>
     </mat-menu>
 
-    <mat-menu #topByGenre = "matMenu">
+    <mat-menu #topByGenre="matMenu">
       <button mat-menu-item>Реализм</button>
       <button mat-menu-item>Фантастика</button>
       <button mat-menu-item>Фентези</button>
@@ -31,23 +31,4 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<!--<mat-card>
-  <mat-form-field>
-    <input matInput [(ngModel)]="answer" placeholder="Who has the best dev tutorials?">
-  </mat-form-field>
-
-  <br>
-
-  <button mat-raised-button (click)="showAnswer()">Answer me</button>
-  <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-</mat-card>
-
-
-<mat-card *ngIf="answerDisplay">
-  <h1>{{ answerDisplay }}, you're damn right.</h1>
-</mat-card>
-
-<nav>
-  <a routerLink="/book">Show book</a>
-</nav> -->
 <router-outlet></router-outlet>
