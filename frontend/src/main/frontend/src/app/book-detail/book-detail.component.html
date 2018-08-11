@@ -1,10 +1,10 @@
 <div *ngIf = "book">
   <h2>{{book.title | uppercase}}</h2>
   <div>
-    <span>Author: </span>{{book.author}}
+    <span>Author: </span>{{book.author.fullname}}
     <span>Publication year: </span>{{book.publicationYear}}
     <span>Language: </span>{{book.language}}
-    <span>Genre: </span>{{book.genre}}
+    <span>Genre: </span>{{book.genre[0].genreName}}
     <span>Rating: </span>{{book.rating}}
     <span>Total Values: </span>{{book.totalValues}}
   </div>

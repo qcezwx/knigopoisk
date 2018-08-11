@@ -16,7 +16,7 @@ export class BookComponent implements OnInit {
   constructor(private bookService: BookService) { }
 
   submit() {
-    this.bookService.getData()
+    this.bookService.getArrayOfBooks()
       .subscribe((books) => this.books = books,
         (error) => console.log(error)
       );
@@ -33,7 +33,7 @@ export class BookDataSource extends DataSource<any> {
     super();
   }
   connect(): Observable<Book[]> {
-    return this.bookService.getData();
+    return this.bookService.getArrayOfBooks();
   }
   disconnect() {}
 }

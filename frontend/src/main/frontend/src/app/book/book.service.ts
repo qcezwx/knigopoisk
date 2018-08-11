@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Book } from "./book";
+import {Injectable} from '@angular/core';
+import {Book} from "./book";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
 
@@ -9,13 +9,18 @@ import {Observable} from "rxjs/internal/Observable";
 export class BookService {
   configUrl = 'assets/config.json';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getConfig() {
     return this.http.get(this.configUrl);
   }
 
-  getData(): Observable<Book[]> {
+  getArrayOfBooks(): Observable<Book[]> {
     return this.http.get<Book[]>("http://localhost:8080/book");
+  }
+
+  getBookByTitle(title: string): Observable<Book> {
+    return this.http.get<Book>(`http://localhost:8080/book/${title}`)
   }
 }
