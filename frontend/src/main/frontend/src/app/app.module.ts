@@ -12,7 +12,7 @@ import {AuthorComponent} from './author/author.component';
 import {UserComponent} from './user/user.component';
 import {MaterialModule} from "./material.module";
 import {BookDetailComponent} from './book-detail/book-detail.component';
-import {MatTableModule} from "@angular/material";
+import {MatGridListModule, MatTableModule} from "@angular/material";
 
 
 @NgModule({
@@ -31,7 +31,8 @@ import {MatTableModule} from "@angular/material";
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatTableModule
+    MatTableModule,
+    MatGridListModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

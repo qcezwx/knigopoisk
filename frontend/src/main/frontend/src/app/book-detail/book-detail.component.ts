@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Book} from "../book/book";
 import {BookService} from "../book/book.service";
 import {ActivatedRoute} from '@angular/router';
-import 'rxjs/add/operator/map'
 
 @Component({
   selector: 'app-book-detail',
@@ -11,25 +10,16 @@ import 'rxjs/add/operator/map'
 })
 export class BookDetailComponent implements OnInit {
   book: Book;
-  resultArray: any;
+  color: String = '#D6D9E3';
 
   constructor(private route: ActivatedRoute,
               private bookService: BookService) {
   }
 
-  // getBookByTitle(): void {
-  //   const title = this.route.snapshot.paramMap.get('title');
-  //   this.bookService.getBookByTitle(title)
-  //     .subscribe(book => this.book = book);
-  // }
-
   getBookByTitle(): void {
     const title = this.route.snapshot.paramMap.get('title');
     this.bookService.getBookByTitle(title)
-      .subscribe(book => {
-        this.book = book;
-        this.resultArray = this.book.map(a => a.genreName);
-      });
+      .subscribe(book => this.book = book);
   }
 
   ngOnInit() {
