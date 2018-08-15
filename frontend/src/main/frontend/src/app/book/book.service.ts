@@ -16,11 +16,16 @@ export class BookService {
     return this.http.get(this.configUrl);
   }
 
-  getArrayOfBooks(): Observable<Book[]> {
+  getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>("http://localhost:8080/book");
   }
 
   getBookByTitle(title: string): Observable<Book> {
     return this.http.get<Book>(`http://localhost:8080/book/${title}`)
   }
+
+  getBooksByGenre(genre: string): Observable<Book[]> {
+    return this.http.get<Book[]>(`http://localhost:8080/book/genre/${genre}`)
+  }
+
 }

@@ -20,11 +20,21 @@
     </mat-menu>
 
     <mat-menu #topByGenre="matMenu">
-      <button mat-menu-item>Реализм</button>
-      <button mat-menu-item>Фантастика</button>
-      <button mat-menu-item>Фентези</button>
-      <button mat-menu-item>Детектив</button>
-      <button mat-menu-item>Роман</button>
+      <button mat-menu-item>
+        <a [routerLink]="['/book/genre/Реализм']">Реализм</a>
+      </button>
+      <button mat-menu-item>
+        <a [routerLink]="['/book/genre/Фантастика']">Фантастика</a>
+      </button>
+      <button mat-menu-item>
+        <a [routerLink]="['/book/genre/Фентези']">Фентези</a>
+      </button>
+      <button mat-menu-item>
+        <a [routerLink]="['/book/genre/Детектив']">Детектив</a>
+      </button>
+      <button mat-menu-item>
+        <a [routerLink]="['/book/genre/Роман']">Роман</a>
+      </button>
     </mat-menu>
 
     <button mat-button>Цитаты</button>

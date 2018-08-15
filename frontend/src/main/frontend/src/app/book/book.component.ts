@@ -3,6 +3,7 @@ import {BookService} from "./book.service";
 import {Book} from "./book";
 import {DataSource} from "@angular/cdk/collections";
 import {Observable} from "rxjs/internal/Observable";
+import {ActivatedRoute} from "@angular/router";
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -15,16 +16,7 @@ export class BookComponent implements OnInit {
 
   constructor(private bookService: BookService) { }
 
-  submit() {
-    this.bookService.getArrayOfBooks()
-      .subscribe((books) => this.books = books,
-        (error) => console.log(error)
-      );
-  }
-
-  ngOnInit() {
-    this.submit();
-  }
+  ngOnInit() {}
 
 }
 
@@ -33,7 +25,7 @@ export class BookDataSource extends DataSource<any> {
     super();
   }
   connect(): Observable<Book[]> {
-    return this.bookService.getArrayOfBooks();
+    return this.bookService.getAllBooks();
   }
   disconnect() {}
 }

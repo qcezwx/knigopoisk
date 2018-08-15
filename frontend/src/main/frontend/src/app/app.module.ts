@@ -13,6 +13,7 @@ import {UserComponent} from './user/user.component';
 import {MaterialModule} from "./material.module";
 import {BookDetailComponent} from './book-detail/book-detail.component';
 import {MatGridListModule, MatTableModule} from "@angular/material";
+import {BookGenreComponent} from "./book-genre/book-genre.component";
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {MatGridListModule, MatTableModule} from "@angular/material";
     HomeComponent,
     AuthorComponent,
     UserComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    BookGenreComponent
   ],
   imports: [
     BrowserModule,
