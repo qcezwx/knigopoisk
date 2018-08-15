@@ -6,7 +6,9 @@
 
     <span class="mat-toolbar-spacer"></span>
 
-    <button mat-button>Что почитать?</button>
+    <button mat-button>
+      <a [routerLink]="['/book', randomInt]">Что почитать?</a>
+    </button>
     <button mat-button>
       <a [routerLink]="['/authors']">Авторы</a>
     </button>
