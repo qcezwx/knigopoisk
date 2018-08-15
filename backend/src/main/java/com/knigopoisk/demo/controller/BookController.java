@@ -26,4 +26,9 @@ public class BookController {
     public Book getBook(@PathVariable("title") String title) {
         return bookService.getBookByTitle(title);
     }
+
+    @GetMapping("/book/genre/{genre}")
+    public List<Book> getBooksByGenre(@PathVariable("genre") String genre) {
+        return bookService.getBooksByGenre(genre);
+    }
 }

@@ -1,6 +1,7 @@
 package com.knigopoisk.demo.repository;
 
 import com.knigopoisk.demo.model.Book;
+import com.knigopoisk.demo.model.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +9,9 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-    public List<Book> findTop50ByOrderByRatingDesc();
+    List<Book> findTop50ByOrderByRatingDesc();
 
-    public Book findByTitle(String title);
+    Book findByTitle(String title);
+
+    List<Book> findBookByGenresOrderByRatingDesc(Genre genre);
 }
