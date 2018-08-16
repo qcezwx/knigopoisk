@@ -14,6 +14,7 @@ import {MaterialModule} from "./material.module";
 import {BookDetailComponent} from './book-detail/book-detail.component';
 import {MatGridListModule, MatTableModule} from "@angular/material";
 import {BookGenreComponent} from "./book-genre/book-genre.component";
+import {AuthorDetailComponent} from "./author-detail/author-detail.component";
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {BookGenreComponent} from "./book-genre/book-genre.component";
     BookComponent,
     HomeComponent,
     AuthorComponent,
+    AuthorDetailComponent,
     UserComponent,
     BookDetailComponent,
     BookGenreComponent

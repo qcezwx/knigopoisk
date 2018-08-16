@@ -8,4 +8,8 @@ import {Component} from '@angular/core';
 export class AppComponent {
   title = 'Knigopoisk';
   randomInt = Math.floor(Math.random() * 101) + 1;
+
+  updateRandomBook(): void {
+    this.randomInt = Math.floor(Math.random() * 101) + 1;
+  }
 }

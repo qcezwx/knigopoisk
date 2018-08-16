@@ -1,3 +1,19 @@
-<p>
-  author works!
-</p>
+<h2> Список всех авторов </h2>
+<div>
+  <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> Позиция </mat-header-cell>
+      <mat-cell *matCellDef="let i = index"> {{i + 1}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="fullname">
+      <mat-header-cell *matHeaderCellDef> Имя </mat-header-cell>
+      <mat-cell *matCellDef="let author">
+        <a [routerLink]="['/authors', author.id]">{{author.fullname}}</a>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

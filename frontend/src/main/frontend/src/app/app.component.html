@@ -6,7 +6,7 @@
 
     <span class="mat-toolbar-spacer"></span>
 
-    <button mat-button>
+    <button mat-button (click)="updateRandomBook()">
       <a [routerLink]="['/book', randomInt]">Что почитать?</a>
     </button>
     <button mat-button>
