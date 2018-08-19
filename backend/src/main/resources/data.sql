@@ -163,7 +163,7 @@ INSERT INTO books(book_id, title, author_id, publication_date, lang, rating, tot
 INSERT INTO books(book_id, title, author_id, publication_date, lang, rating, total_values, created_at, updated_at) VALUES ('105','Гарри Поттер и Орден Феникса','30','1-Jan-2003','eng',6.2,0,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
 INSERT INTO books(book_id, title, author_id, publication_date, lang, rating, total_values, created_at, updated_at) VALUES ('106','Гарри Поттер и Принц-Полукровка','30','1-Jan-2005','eng',6.4,0,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
 INSERT INTO books(book_id, title, author_id, publication_date, lang, rating, total_values, created_at, updated_at) VALUES ('107','Гарри Поттер и Тайная Комната','30','1-Jan-1998','eng',8.1,0,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
-INSERT INTO books(book_id, title, author_id, publication_date, lang, rating, total_values, created_at, updated_at) VALUES ('108','Гарри Поттер и Дары Смерти','30','1-Jan-2007','eng',7.2,0,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO books(book_id, title, author_id, publication_date, lang, rating, total_values, created_at, updated_at) VALUES ('108','Гарри Поттер и Дары Смерти','30','1-Jan-2007','eng',7.2 ,0,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
 --INSERT INTO books(book_id, title, author_id, publication_date, lang, rating, total_values, created_at, updated_at) VALUES ('','','','1-Jan-','',0,0,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
 INSERT INTO book_genre(book_id, genre_id) VALUES ('1','2');
 INSERT INTO book_genre(book_id, genre_id) VALUES ('1','23');

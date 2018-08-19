@@ -1,5 +1,6 @@
 package com.knigopoisk.demo.service;
 
+import com.knigopoisk.demo.dto.BookDto;
 import com.knigopoisk.demo.model.Book;
 import com.knigopoisk.demo.repository.BookRepository;
 import com.knigopoisk.demo.repository.GenreRepository;
@@ -18,6 +19,7 @@ public class BookService {
 
     public List<Book> getTopBooks() {
         List<Book> topBooks = bookRepository.findTop50ByOrderByRatingDesc();
+        //List<BookDto> bookDto = BookDto.builder().id(topBooks.get(0)).author().rating().title();
 
         return topBooks;
     }
