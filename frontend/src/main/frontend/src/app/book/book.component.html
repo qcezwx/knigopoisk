@@ -15,7 +15,9 @@
 
     <ng-container matColumnDef="author">
       <mat-header-cell *matHeaderCellDef> Автор </mat-header-cell>
-      <mat-cell *matCellDef="let book"> {{book.author.fullname}} </mat-cell>
+      <mat-cell *matCellDef="let book">
+        <a [routerLink]="['/authors', book.author.id]">{{book.author.fullname}} </a>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="rating">

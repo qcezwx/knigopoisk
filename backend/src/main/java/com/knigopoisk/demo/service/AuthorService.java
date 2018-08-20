@@ -35,10 +35,13 @@ public class AuthorService {
         return topAuthors;
     }
 
-    public Optional<Author> findById(Long id) {
-        Optional<Author> author = authorRepository.findById(id);
+    public AuthorDto findById(Long id) {
+        AuthorProjection author = authorRepository.findAuthorById(id);
+        AuthorDto authorDto = AuthorDto.fromProjection(author);
+        List<String> titlesAndAuthorIds = bookRepository.findBooksByAuthor_Id(author.getId());
+        authorDto.setTitles(titlesAndAuthorIds);
 
-        return author;
+        return authorDto;
     }
 
     public Author findByFullname(String fullname) {

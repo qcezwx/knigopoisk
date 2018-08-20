@@ -11,8 +11,14 @@ import {Observable} from "rxjs/internal/Observable";
 })
 export class AuthorComponent implements OnInit {
   dataSource = new AuthorDataSource(this.authorService)
-  displayedColumns = ['position', 'fullname'];
+  displayedColumns = ['position', 'fullname', 'rating'];
   authors: Author[];
+
+  round(number: number): number {
+    let tempNumber = number * 10;
+    let roundedTempNumber = Math.round(tempNumber);
+    return roundedTempNumber / 10;
+  };
 
   constructor(private authorService: AuthorService) {
   }

@@ -12,7 +12,14 @@ import java.util.Optional;
 
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Long> {
-    Optional<Author> findById(Long id);
+    @Query(value = "select distinct a.author_id as id," +
+            " a.fullname as fullname," +
+            " a.birth_date as birthDate," +
+            " a.death_date as deathDate," +
+            " avg(b.rating) over (partition by a.author_id) as rating" +
+            " from authors a join books b on a.author_id = b.author_id" +
+            " where a.author_id = ?1", nativeQuery = true)
+    AuthorProjection findAuthorById(Long id);
 
     Author findByFullname(String fullname);
 

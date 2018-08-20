@@ -2,6 +2,7 @@ package com.knigopoisk.demo.controller;
 
 import com.knigopoisk.demo.model.Author;
 import com.knigopoisk.demo.projection.AuthorDto;
+import com.knigopoisk.demo.projection.AuthorProjection;
 import com.knigopoisk.demo.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,7 +30,7 @@ public class AuthorController {
     }
 
     @GetMapping("/authors/{id}")
-    public Optional<Author> getAuthor(@PathVariable("id") Long id) {
+    public AuthorDto getAuthor(@PathVariable("id") Long id) {
         return authorService.findById(id);
     }
 }

@@ -4,7 +4,7 @@
       <mat-grid-tile [colspan]=8 [rowspan]=3 [style.border-bottom]="'5px solid #FFFFFF'">
         <div class="header-grid">
           {{book.title | uppercase}} <br />
-          {{book.author.fullname}} ({{book.publicationDate.substring(0, 4)}})
+          <a [routerLink]="['/authors', book.author.id]">{{book.author.fullname}} </a> ({{book.publicationDate.substring(0, 4)}})
         </div>
       </mat-grid-tile>
       <mat-grid-tile [colspan]=3 [rowspan]=14 [style.border-right]="'3px solid #FFFFFF'" [style.border-bottom]="'3px solid #FFFFFF'">

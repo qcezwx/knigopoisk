@@ -24,7 +24,7 @@ public class Book extends AuditModel {
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "book_genre",
             joinColumns = {@JoinColumn(name = "book_id")},
