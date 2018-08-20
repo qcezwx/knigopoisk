@@ -41,4 +41,5 @@ import {AuthorDetailComponent} from "./author-detail/author-detail.component";
   providers: [HttpClient],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -1,16 +1,17 @@
 package com.knigopoisk.demo.service;
 
 import com.knigopoisk.demo.model.Author;
+import com.knigopoisk.demo.projection.AuthorDto;
+import com.knigopoisk.demo.projection.AuthorProjection;
 import com.knigopoisk.demo.repository.AuthorRepository;
 import com.knigopoisk.demo.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.math.BigInteger;
 
 @Service
 public class AuthorService {
@@ -19,23 +20,17 @@ public class AuthorService {
     @Autowired
     BookRepository bookRepository;
 
-    public List<Object[]> getAuthors() {
-        List<Object[]> topAuthors = authorRepository.findAllAuthorsWithRating();
+    public List<AuthorDto> getAuthors() {
+        List<AuthorProjection> topAuthorsProjection = authorRepository.findAllAuthorsWithRating();
+        List<AuthorDto> topAuthors = new LinkedList<AuthorDto>();
 
-        for (int i = 0; i < topAuthors.size(); i++) {
-            Object[] selectedAuthor = topAuthors.get(i);
-            BigInteger selectedId = (BigInteger) selectedAuthor[0];
-            Long longSelectedId = selectedId.longValue();
-            List<Object> titlesAndAuthorIds = bookRepository.findBooksByAuthor_Id(longSelectedId);
-            Object[] authorWithBooks = new Object[selectedAuthor.length + 1];
-            for (int j = 0; j < selectedAuthor.length; j++) {
-                authorWithBooks[j] = selectedAuthor[j];
-            }
-            authorWithBooks[selectedAuthor.length] = titlesAndAuthorIds;
-            topAuthors.remove(i);
-            topAuthors.add(i, authorWithBooks);
+        for (int i = 0; i < topAuthorsProjection.size(); i++) {
+            AuthorDto authorDto = AuthorDto.fromProjection(topAuthorsProjection.get(i));
+            Long selectedId = topAuthorsProjection.get(i).getId();
+            List<String> titlesAndAuthorIds = bookRepository.findBooksByAuthor_Id(selectedId);
+            authorDto.setTitles(titlesAndAuthorIds);
+            topAuthors.add(authorDto);
         }
-
 
         return topAuthors;
     }
@@ -43,6 +38,6 @@ public class AuthorService {
     public Optional<Author> getAuthorById(Long id) {
         Optional<Author> author = authorRepository.findById(id);
 
-        return  author;
+        return author;
     }
 }

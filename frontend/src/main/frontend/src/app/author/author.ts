@@ -4,14 +4,14 @@ export class Author {
   birthDate: string;
   deathDate: string;
   rating: number;
-  books: string[];
+  titles: string[];
 
-  constructor(id: number, fullname: string, birthDate: string, deathDate: string, rating: number, books: string[]) {
+  constructor(id: number, fullname: string, birthDate: string, deathDate: string, rating: number, titles: string[]) {
     this.id = id;
     this.fullname = fullname;
     this.birthDate = birthDate;
     this.deathDate = deathDate;
     this.rating = rating;
-    this.books = books;
+    this.titles = titles;
   }
 }

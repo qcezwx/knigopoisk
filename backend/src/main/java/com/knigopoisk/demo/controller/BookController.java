@@ -1,6 +1,7 @@
 package com.knigopoisk.demo.controller;
 
 import com.knigopoisk.demo.model.Book;
+import com.knigopoisk.demo.projection.BookProjection;
 import com.knigopoisk.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,7 +23,7 @@ public class BookController {
     }
 
     @GetMapping("/book")
-    public List<Book> getTopBooks() {
+    public List<BookProjection> getTopBooks() {
         return bookService.getTopBooks();
     }
 

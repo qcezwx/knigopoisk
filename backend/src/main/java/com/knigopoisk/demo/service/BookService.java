@@ -1,10 +1,11 @@
 package com.knigopoisk.demo.service;
 
-import com.knigopoisk.demo.dto.BookDto;
 import com.knigopoisk.demo.model.Book;
+import com.knigopoisk.demo.projection.BookProjection;
 import com.knigopoisk.demo.repository.BookRepository;
 import com.knigopoisk.demo.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,17 +18,10 @@ public class BookService {
     @Autowired
     GenreRepository genreRepository;
 
-    public List<Book> getTopBooks() {
-        List<Book> topBooks = bookRepository.findTop50ByOrderByRatingDesc();
-        //List<BookDto> bookDto = BookDto.builder().id(topBooks.get(0)).author().rating().title();
+    public List<BookProjection> getTopBooks() {
+        List<BookProjection> topBooks = bookRepository.findAllBooks(new Sort(Sort.Direction.DESC, "rating")).subList(0,49);
 
         return topBooks;
-    }
-
-    public Book getBookByTitle(String title) {
-        Book book = bookRepository.findByTitle(title);
-
-        return book;
     }
 
     public Optional<Book> getBookById(Long id) {
