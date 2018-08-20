@@ -25,11 +25,11 @@ public class AuthorController {
 
     @GetMapping("/authors")
     public List<AuthorDto> getAuthors() {
-        return authorService.getAuthors();
+        return authorService.findSortedByRating();
     }
 
     @GetMapping("/authors/{id}")
     public Optional<Author> getAuthor(@PathVariable("id") Long id) {
-        return authorService.getAuthorById(id);
+        return authorService.findById(id);
     }
 }

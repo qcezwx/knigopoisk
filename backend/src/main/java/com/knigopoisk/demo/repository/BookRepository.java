@@ -18,8 +18,13 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     Optional<Book> findById(Long id);
 
+    Book findByTitle(String title);
+
     List<Book> findBookByGenresOrderByRatingDesc(Genre genre);
 
     @Query("select b.title as title from Book b join b.author a where a.id = ?1")
     List<String> findBooksByAuthor_Id(Long id);
+
+    void deleteById(Long id);
+
 }

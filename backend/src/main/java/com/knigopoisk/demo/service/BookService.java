@@ -18,21 +18,38 @@ public class BookService {
     @Autowired
     GenreRepository genreRepository;
 
-    public List<BookProjection> getTopBooks() {
+    public List<BookProjection> findTopBooks() {
         List<BookProjection> topBooks = bookRepository.findAllBooks(new Sort(Sort.Direction.DESC, "rating")).subList(0,49);
 
         return topBooks;
     }
 
-    public Optional<Book> getBookById(Long id) {
+    public Optional<Book> findById(Long id) {
         Optional<Book> book = bookRepository.findById(id);
 
         return book;
     }
 
-    public List<Book> getBooksByGenre(String genre) {
+    public Book findByTitle(String title) {
+        Book book = bookRepository.findByTitle(title);
+
+        return book;
+    }
+
+    public List<Book> findByGenre(String genre) {
         List<Book> booksByGenre = bookRepository.findBookByGenresOrderByRatingDesc(genreRepository.findGenreByGenreName(genre));
 
         return booksByGenre;
     }
+
+    public void deleteById(Long id) {
+        bookRepository.deleteById(id);
+    }
+
+    public Book saveBook(Book book) {
+        Book bookToSave = bookRepository.save(book);
+        return bookToSave;
+    }
+
+
 }

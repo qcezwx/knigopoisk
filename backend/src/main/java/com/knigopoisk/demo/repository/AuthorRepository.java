@@ -14,6 +14,8 @@ import java.util.Optional;
 public interface AuthorRepository extends JpaRepository<Author, Long> {
     Optional<Author> findById(Long id);
 
+    Author findByFullname(String fullname);
+
     @Query(value = "select distinct a.author_id as id," +
             " a.fullname as fullname," +
             " a.birth_date as birthDate," +

@@ -20,7 +20,7 @@ public class AuthorService {
     @Autowired
     BookRepository bookRepository;
 
-    public List<AuthorDto> getAuthors() {
+    public List<AuthorDto> findSortedByRating() {
         List<AuthorProjection> topAuthorsProjection = authorRepository.findAllAuthorsWithRating();
         List<AuthorDto> topAuthors = new LinkedList<AuthorDto>();
 
@@ -35,9 +35,15 @@ public class AuthorService {
         return topAuthors;
     }
 
-    public Optional<Author> getAuthorById(Long id) {
+    public Optional<Author> findById(Long id) {
         Optional<Author> author = authorRepository.findById(id);
 
         return author;
+    }
+
+    public Author findByFullname(String fullname) {
+        Author author = authorRepository.findByFullname(fullname);
+
+        return  author;
     }
 }

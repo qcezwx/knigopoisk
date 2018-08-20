@@ -42,6 +42,12 @@ public class Book extends AuditModel {
     public Book() {
     }
 
+    //for POST
+    public Book(String title, Author author) {
+        this.title = title;
+        this.author = author;
+    }
+
     public Book(@NotNull String title, @NotNull Author author, Set<Genre> genres, Date publicationDate, String language, float rating, int totalValues) {
         this.title = title;
         this.author = author;
