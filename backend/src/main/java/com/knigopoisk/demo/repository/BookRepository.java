@@ -22,8 +22,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     List<Book> findBookByGenresOrderByRatingDesc(Genre genre);
 
-    @Query("select b.title as title from Book b join b.author a where a.id = ?1")
-    List<String> findBooksByAuthor_Id(Long id);
+    @Query("select b.id as id, b.title as title from Book b join b.author a where a.id = ?1")
+    List<BookProjection> findBooksByAuthor_Id(Long id);
 
     void deleteById(Long id);
 

@@ -3,6 +3,7 @@ package com.knigopoisk.demo.service;
 import com.knigopoisk.demo.model.Author;
 import com.knigopoisk.demo.projection.AuthorDto;
 import com.knigopoisk.demo.projection.AuthorProjection;
+import com.knigopoisk.demo.projection.BookProjection;
 import com.knigopoisk.demo.repository.AuthorRepository;
 import com.knigopoisk.demo.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class AuthorService {
         for (int i = 0; i < topAuthorsProjection.size(); i++) {
             AuthorDto authorDto = AuthorDto.fromProjection(topAuthorsProjection.get(i));
             Long selectedId = topAuthorsProjection.get(i).getId();
-            List<String> titlesAndAuthorIds = bookRepository.findBooksByAuthor_Id(selectedId);
+            List<BookProjection> titlesAndAuthorIds = bookRepository.findBooksByAuthor_Id(selectedId);
             authorDto.setTitles(titlesAndAuthorIds);
             topAuthors.add(authorDto);
         }
@@ -38,7 +39,7 @@ public class AuthorService {
     public AuthorDto findById(Long id) {
         AuthorProjection author = authorRepository.findAuthorById(id);
         AuthorDto authorDto = AuthorDto.fromProjection(author);
-        List<String> titlesAndAuthorIds = bookRepository.findBooksByAuthor_Id(author.getId());
+        List<BookProjection> titlesAndAuthorIds = bookRepository.findBooksByAuthor_Id(author.getId());
         authorDto.setTitles(titlesAndAuthorIds);
 
         return authorDto;

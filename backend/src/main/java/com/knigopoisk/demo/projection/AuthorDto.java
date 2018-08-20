@@ -12,7 +12,7 @@ public class AuthorDto {
     Date birthDate;
     Date deathDate;
     Float rating;
-    List<String> titles;
+    List<BookProjection> titles;
 
     public AuthorDto() {
     }

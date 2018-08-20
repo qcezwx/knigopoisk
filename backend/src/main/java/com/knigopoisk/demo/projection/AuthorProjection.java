@@ -12,5 +12,7 @@ public interface AuthorProjection {
     Date getDeathDate();
 
     Float getRating();
+
+    BookProjection getBookProjection();
 }
 
