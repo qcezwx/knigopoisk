@@ -1,16 +1,16 @@
 export class Book {
-  private id: number;
-  private title: string;
-  private author: {
+  id: number;
+  title: string;
+  author: {
     fullname: string
   };
-  private publicationDate: string;
-  private language: string;
-  private genres: {
+  publicationDate: string;
+  language: string;
+  genres: {
     genreName: string
   }[];
-  private rating: number;
-  private totalValues: number;
+  rating: number;
+  totalValues: number;
 
   constructor(id: number, title: string, author: { fullname: string }, publicationDate: string, language: string, genres: { genreName: string }[], rating: number, totalValues: number) {
     this.id = id;

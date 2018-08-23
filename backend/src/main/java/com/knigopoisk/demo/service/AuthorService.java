@@ -16,18 +16,24 @@ import java.util.Optional;
 
 @Service
 public class AuthorService {
+    private final AuthorRepository authorRepository;
+    private final BookRepository bookRepository;
+
+    public AuthorService(AuthorRepository authorRepository, BookRepository bookRepository) {
+        this.authorRepository = authorRepository;
+        this.bookRepository = bookRepository;
+    }
+
     @Autowired
-    AuthorRepository authorRepository;
-    @Autowired
-    BookRepository bookRepository;
+
 
     public List<AuthorDto> findSortedByRating() {
         List<AuthorProjection> topAuthorsProjection = authorRepository.findAllAuthorsWithRating();
         List<AuthorDto> topAuthors = new LinkedList<AuthorDto>();
 
-        for (int i = 0; i < topAuthorsProjection.size(); i++) {
-            AuthorDto authorDto = AuthorDto.fromProjection(topAuthorsProjection.get(i));
-            Long selectedId = topAuthorsProjection.get(i).getId();
+        for (AuthorProjection authorProjection: topAuthorsProjection) {
+            AuthorDto authorDto = AuthorDto.fromProjection(authorProjection);
+            Long selectedId = authorProjection.getId();
             List<BookProjection> titlesAndAuthorIds = bookRepository.findBooksByAuthor_Id(selectedId);
             authorDto.setTitles(titlesAndAuthorIds);
             topAuthors.add(authorDto);

@@ -13,10 +13,14 @@ import java.util.Optional;
 
 @Service
 public class BookService {
+    private final GenreRepository genreRepository;
+    private final BookRepository bookRepository;
+
     @Autowired
-    BookRepository bookRepository;
-    @Autowired
-    GenreRepository genreRepository;
+    public BookService(GenreRepository genreRepository, BookRepository bookRepository) {
+        this.genreRepository = genreRepository;
+        this.bookRepository = bookRepository;
+    }
 
     public List<BookProjection> findTopBooks() {
         List<BookProjection> topBooks = bookRepository.findAllBooks(new Sort(Sort.Direction.DESC, "rating")).subList(0,49);
