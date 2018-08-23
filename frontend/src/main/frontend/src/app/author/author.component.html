@@ -9,7 +9,7 @@
     <ng-container matColumnDef="fullname">
       <mat-header-cell *matHeaderCellDef> Имя</mat-header-cell>
       <mat-cell *matCellDef="let author">
-        <a [routerLink]="['/authors', author.id]">{{author.fullname}}</a>
+        <a [routerLink]="['/api/authors', author.id]">{{author.fullname}}</a>
       </mat-cell>
     </ng-container>
 

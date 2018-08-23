@@ -2,7 +2,8 @@ export class Book {
   id: number;
   title: string;
   author: {
-    fullname: string
+    id: number;
+    fullname: string;
   };
   publicationDate: string;
   language: string;
@@ -12,7 +13,8 @@ export class Book {
   rating: number;
   totalValues: number;
 
-  constructor(id: number, title: string, author: { fullname: string }, publicationDate: string, language: string, genres: { genreName: string }[], rating: number, totalValues: number) {
+
+  constructor(id: number, title: string, author: { id: number; fullname: string }, publicationDate: string, language: string, genres: { genreName: string }[], rating: number, totalValues: number) {
     this.id = id;
     this.title = title;
     this.author = author;

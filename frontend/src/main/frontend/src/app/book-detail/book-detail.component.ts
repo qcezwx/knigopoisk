@@ -18,6 +18,10 @@ export class BookDetailComponent implements OnInit, OnDestroy {
               private bookService: BookService) {
   }
 
+  delete(book: Book): void {
+    this.bookService.deleteBook(book).subscribe();
+  }
+
   getBookById(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.bookService.getBookById(id)

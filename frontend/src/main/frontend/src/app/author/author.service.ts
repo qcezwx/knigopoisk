@@ -17,11 +17,11 @@ export class AuthorService {
   }
 
   getAllAuthors(): Observable<Author[]> {
-    return this.http.get<Author[]>("http://localhost:8080/authors");
+    return this.http.get<Author[]>("http://localhost:8080/api/authors");
   }
 
   getAuthorById(id: number): Observable<Author> {
-    return this.http.get<Author>(`http://localhost:8080/authors/${id}`)
+    return this.http.get<Author>(`http://localhost:8080/api/authors/${id}`)
   }
 
 }

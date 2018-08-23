@@ -24,22 +24,22 @@ public class BookController {
         this.authorService = authorService;
     }
 
-    @GetMapping("/book")
+    @GetMapping("/api/book")
     public List<BookProjection> getTopBooks() {
         return bookService.findTopBooks();
     }
 
-    @GetMapping("/book/{id}")
+    @GetMapping("/api/book/{id}")
     public Optional<Book> getBookById(@PathVariable("id") Long id) {
         return bookService.findById(id);
     }
 
-    @GetMapping("/book/genre/{genre}")
+    @GetMapping("/api/book/genre/{genre}")
     public List<Book> getBooksByGenre(@PathVariable("genre") String genre) {
         return bookService.findByGenre(genre);
     }
 
-    @PostMapping("/book")
+    @PostMapping("/api/book")
     public ResponseEntity<Object> createBook(@RequestBody String title, String fullname) {
         if (bookService.findByTitle(title) != null && authorService.findByFullname(fullname) != null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -49,7 +49,7 @@ public class BookController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/book/{id}")
+    @PutMapping("/api/book/{id}")
     public ResponseEntity<Object> updateBook(@RequestBody Book book, @PathVariable Long id) {
         Optional<Book> bookOptional = bookService.findById(id);
 
@@ -63,7 +63,7 @@ public class BookController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/book/{id}")
+    @DeleteMapping("/api/book/{id}")
     public void deleteBook(@PathVariable("id") Long id) {
         bookService.deleteById(id);
     }

@@ -7,12 +7,10 @@ import com.knigopoisk.demo.projection.BookProjection;
 import com.knigopoisk.demo.repository.AuthorRepository;
 import com.knigopoisk.demo.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AuthorService {
@@ -31,7 +29,7 @@ public class AuthorService {
         List<AuthorProjection> topAuthorsProjection = authorRepository.findAllAuthorsWithRating();
         List<AuthorDto> topAuthors = new LinkedList<AuthorDto>();
 
-        for (AuthorProjection authorProjection: topAuthorsProjection) {
+        for (AuthorProjection authorProjection : topAuthorsProjection) {
             AuthorDto authorDto = AuthorDto.fromProjection(authorProjection);
             Long selectedId = authorProjection.getId();
             List<BookProjection> titlesAndAuthorIds = bookRepository.findBooksByAuthor_Id(selectedId);
@@ -54,6 +52,6 @@ public class AuthorService {
     public Author findByFullname(String fullname) {
         Author author = authorRepository.findByFullname(fullname);
 
-        return  author;
+        return author;
     }
 }
