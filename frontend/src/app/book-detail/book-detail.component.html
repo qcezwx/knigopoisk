@@ -1,16 +1,16 @@
 <div *ngIf="book">
   <div>
-    <mat-grid-list cols=8 rowHeight=20 [style.background]=color>
+    <mat-grid-list cols=8 rowHeight=23 [style.background]=color>
       <mat-grid-tile [colspan]=8 [rowspan]=3 [style.border-bottom]="'5px solid #FFFFFF'">
         <div class="header-grid">
-          <!--<button title="delete this book" (click)="delete(book)">x</button> -->{{book.title | uppercase}} <br />
+          <button title="delete this book" (click)="delete(book)">x</button>{{book.title | uppercase}} <br />
           <a [routerLink]="['/api/authors', book.author.id]">{{book.author.fullname}} </a> ({{book.publicationDate.substring(0, 4)}})
         </div>
       </mat-grid-tile>
       <mat-grid-tile [colspan]=3 [rowspan]=14 [style.border-right]="'3px solid #FFFFFF'" [style.border-bottom]="'3px solid #FFFFFF'">
         image
       </mat-grid-tile>
-      <mat-grid-tile [colspan]=5 [rowspan]=17>
+      <mat-grid-tile [colspan]=5 [rowspan]=20>
         <div class="header-grid">
           Language: {{book.language}}<br />
           Genre:
@@ -20,8 +20,24 @@
           <p>Info about book</p>
         </div>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]=3 [rowspan]=3 [style.border-right]="'3px solid #FFFFFF'">
+      <mat-grid-tile [colspan]=3 [rowspan]=6 [style.border-right]="'3px solid #FFFFFF'">
         Rating: {{book.rating}} ({{book.totalValues}} values)
+        <mat-form-field>
+          <mat-select [(value)]="selectedValue">
+            <mat-option>None</mat-option>
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+            <mat-option value="7">7</mat-option>
+            <mat-option value="8">8</mat-option>
+            <mat-option value="9">9</mat-option>
+            <mat-option value="10">10</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button (click)="addBookValue()">Оценить</button>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

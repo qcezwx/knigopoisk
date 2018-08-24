@@ -1,6 +1,6 @@
 package com.knigopoisk.demo.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,11 +10,14 @@ import java.util.Set;
 
 @Entity
 @Table(name = "books")
-@Data
-
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Book extends AuditModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+    @SequenceGenerator(name="seq", initialValue=200, allocationSize=1)
 
     @Column(name = "book_id")
     private Long id;
@@ -39,22 +42,21 @@ public class Book extends AuditModel {
     @Column(name = "total_values")
     private int totalValues;
 
-    public Book() {
-    }
+//    public Book() {
+//    }
+//
+//    public Book(@NotNull String title, @NotNull Author author, Set<Genre> genres, Date publicationDate, String language, float rating, int totalValues) {
+//        this.title = title;
+//        this.author = author;
+//        this.genres = genres;
+//        this.publicationDate = publicationDate;
+//        this.language = language;
+//        this.rating = rating;
+//        this.totalValues = totalValues;
+//    }
 
-    //for POST
-    public Book(String title, Author author) {
-        this.title = title;
-        this.author = author;
-    }
-
-    public Book(@NotNull String title, @NotNull Author author, Set<Genre> genres, Date publicationDate, String language, float rating, int totalValues) {
-        this.title = title;
-        this.author = author;
-        this.genres = genres;
-        this.publicationDate = publicationDate;
-        this.language = language;
-        this.rating = rating;
-        this.totalValues = totalValues;
+    public void updateRating(int value) {
+        this.setRating((rating * totalValues + value) / (totalValues + 1));
+        this.setTotalValues(totalValues + 1);
     }
 }

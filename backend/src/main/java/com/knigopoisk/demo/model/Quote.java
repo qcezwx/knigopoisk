@@ -10,7 +10,8 @@ import javax.validation.constraints.NotNull;
 @Data
 public class Quote {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "quote_seq")
+    @SequenceGenerator(name="quote_seq", initialValue=200, allocationSize=1)
     @Column(name = "quote_id")
     private Long id;
     @NotNull

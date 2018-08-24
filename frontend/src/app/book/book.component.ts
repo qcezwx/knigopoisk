@@ -4,6 +4,7 @@ import {Book} from "./book";
 import {DataSource} from "@angular/cdk/collections";
 import {Observable} from "rxjs/internal/Observable";
 import {ActivatedRoute} from "@angular/router";
+import {BookDto} from "./bookDto";
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -18,10 +19,11 @@ export class BookComponent implements OnInit {
 
   ngOnInit() {}
 
-  add(title: string, authorId: number, publicationDate: string, language: string, genreId: number[], rating: number): void {
-    if (!name) { return; }
-    newBook:
-    this.bookService.addBook().subscribe()
+  add(title: string, authorName: string, language: string): void {
+    if (!title) { return; }
+
+    let newBook: BookDto = new BookDto(title.trim(), authorName.trim(), language.trim());
+    this.bookService.addBook(newBook).subscribe()
   }
 
 }

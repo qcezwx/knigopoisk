@@ -1,3 +1,18 @@
+<h2> Добавьте свою книгу: </h2>
+<div>
+  <label>Название книги:
+    <input #title />
+  </label>
+  <label>Имя автора:
+    <input #authorName />
+  </label>
+  <label>Язык:
+    <input #language />
+  </label>
+  <button (click)="add(title.value, authorName.value, language.value)">
+    add
+  </button>
+</div>
 <h2> Топ 50 книг: </h2>
 <div>
   <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">

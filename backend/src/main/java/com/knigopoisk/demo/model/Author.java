@@ -15,7 +15,8 @@ import java.util.Set;
 
 public class Author implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_seq")
+    @SequenceGenerator(name="author_seq", initialValue=200, allocationSize=1)
     @Column(name = "author_id", nullable = false)
     private Long id;
     @NotNull

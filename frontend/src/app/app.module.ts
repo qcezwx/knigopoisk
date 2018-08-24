@@ -11,7 +11,7 @@ import {HomeComponent} from './home/home.component';
 import {AuthorComponent} from './author/author.component';
 import {MaterialModule} from "./material.module";
 import {BookDetailComponent} from './book-detail/book-detail.component';
-import {MatGridListModule, MatTableModule} from "@angular/material";
+import {MatGridListModule, MatSelectModule, MatTableModule} from "@angular/material";
 import {BookGenreComponent} from "./book-genre/book-genre.component";
 import {AuthorDetailComponent} from "./author-detail/author-detail.component";
 
@@ -34,7 +34,8 @@ import {AuthorDetailComponent} from "./author-detail/author-detail.component";
     BrowserAnimationsModule,
     MaterialModule,
     MatTableModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSelectModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

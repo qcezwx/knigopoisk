@@ -12,6 +12,7 @@ export class BookDetailComponent implements OnInit, OnDestroy {
   book: Book;
   color: String = '#D6D9E3';
   id: number;
+  selectedValue: number;
   private sub: any;
 
   constructor(private route: ActivatedRoute,
@@ -26,6 +27,10 @@ export class BookDetailComponent implements OnInit, OnDestroy {
     const id = +this.route.snapshot.paramMap.get('id');
     this.bookService.getBookById(id)
       .subscribe(book => this.book = book);
+  }
+
+  addBookValue(): void {
+    this.bookService.addBookValue(this.book, this.selectedValue).subscribe();
   }
 
   ngOnInit() {

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Book} from "./book";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
+import {BookDto} from "./bookDto";
 
 
 const httpOptions = {
@@ -40,7 +41,13 @@ export class BookService {
     return this.http.delete<Book>(`http://localhost:8080/api/book/${id}`, httpOptions)
   }
 
-  addBook (book: Book): Observable<Book> {
-    return this.http.post<Book>(`http://localhost:8080/api/book`, book, httpOptions)
+  addBook (bookDto: BookDto): Observable<BookDto> {
+    return this.http.post<BookDto>(`http://localhost:8080/api/book`, bookDto, httpOptions)
+  }
+
+  addBookValue (book: Book| number, value: number): Observable<number> {
+    const id = typeof book === 'number' ? book : book.id;
+
+    return this.http.put<number>(`http://localhost:8080/api/book/${id}`, value, httpOptions)
   }
 }

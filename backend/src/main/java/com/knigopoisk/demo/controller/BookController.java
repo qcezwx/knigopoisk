@@ -1,6 +1,9 @@
 package com.knigopoisk.demo.controller;
 
+import com.fasterxml.jackson.databind.node.TextNode;
 import com.knigopoisk.demo.model.Book;
+import com.knigopoisk.demo.model.BookValue;
+import com.knigopoisk.demo.model.NewBook;
 import com.knigopoisk.demo.projection.BookProjection;
 import com.knigopoisk.demo.service.AuthorService;
 import com.knigopoisk.demo.service.BookService;
@@ -40,23 +43,31 @@ public class BookController {
     }
 
     @PostMapping("/api/book")
-    public ResponseEntity<Object> createBook(@RequestBody String title, String fullname) {
-        if (bookService.findByTitle(title) != null && authorService.findByFullname(fullname) != null) {
+    public ResponseEntity<Object> createBook(@RequestBody NewBook newBook) {
+        if (bookService.findByTitle(newBook.getTitle()) != null && authorService.findByFullname(newBook.getAuthorName()) != null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        bookService.saveBook(new Book(title, authorService.findByFullname(fullname)));
+        Book book = Book.builder()
+                .title(newBook.getTitle())
+                .author(authorService.findByFullname(newBook.getAuthorName()))
+                .language(newBook.getLanguage())
+                .build();
+        bookService.saveBook(book);
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/api/book/{id}")
-    public ResponseEntity<Object> updateBook(@RequestBody Book book, @PathVariable Long id) {
+    public ResponseEntity<Object> updateBookRating(@RequestBody BookValue bookValue, @PathVariable Long id) {
         Optional<Book> bookOptional = bookService.findById(id);
 
         if (!bookOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
+        Book book = bookOptional.get();
+        book.updateRating(bookValue.getValue());
         book.setId(id);
         bookService.saveBook(book);
 
