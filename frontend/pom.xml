@@ -24,7 +24,6 @@
                 <configuration>
                     <nodeVersion>v8.11.3</nodeVersion>
                     <npmVersion>4.4.1</npmVersion>
-                    <workingDirectory>src/main/frontend</workingDirectory>
                 </configuration>
 
                 <executions>
