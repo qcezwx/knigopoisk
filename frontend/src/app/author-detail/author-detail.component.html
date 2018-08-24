@@ -13,7 +13,7 @@
       <mat-grid-tile [colspan]=5 [rowspan]=14>
         List of books: <br />
         <div *ngFor='let title of author.titles'>
-          <a [routerLink]="['/api/book', title.id]">{{title.title}} </a>
+          <a [routerLink]="['/book', title.id]">{{title.title}} </a>
         </div>
       </mat-grid-tile>
     </mat-grid-list>

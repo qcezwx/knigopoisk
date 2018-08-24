@@ -9,14 +9,14 @@
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef> Название </mat-header-cell>
       <mat-cell *matCellDef="let book">
-        <a [routerLink]="['api/book', book.id]">{{book.title}}</a>
+        <a [routerLink]="['/book', book.id]">{{book.title}}</a>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="author">
       <mat-header-cell *matHeaderCellDef> Автор </mat-header-cell>
       <mat-cell *matCellDef="let book">
-        <a [routerLink]="['/api/authors', book.author.id]">{{book.author.fullname}} </a>
+        <a [routerLink]="['/authors', book.author.id]">{{book.author.fullname}} </a>
       </mat-cell>
     </ng-container>
 

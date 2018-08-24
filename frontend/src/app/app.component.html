@@ -7,35 +7,35 @@
     <span class="mat-toolbar-spacer"></span>
 
     <button mat-button (click)="updateRandomBook()">
-      <a [routerLink]="['/api/book', randomInt]">Что почитать?</a>
+      <a [routerLink]="['/book', randomInt]">Что почитать?</a>
     </button>
     <button mat-button>
-      <a [routerLink]="['/api/authors']">Авторы</a>
+      <a [routerLink]="['/authors']">Авторы</a>
     </button>
     <button mat-button [matMenuTriggerFor]="books">Книги</button>
 
     <mat-menu #books="matMenu">
       <button mat-menu-item [matMenuTriggerFor]="topByGenre">Топ жанра</button>
       <button mat-menu-item>
-        <a [routerLink]="['/api/book']">Топ 50</a>
+        <a [routerLink]="['/book']">Топ 50</a>
       </button>
     </mat-menu>
 
     <mat-menu #topByGenre="matMenu">
       <button mat-menu-item>
-        <a [routerLink]="['/api/book/genre/Реализм']">Реализм</a>
+        <a [routerLink]="['/book/genre/Реализм']">Реализм</a>
       </button>
       <button mat-menu-item>
-        <a [routerLink]="['/api/book/genre/Фантастика']">Фантастика</a>
+        <a [routerLink]="['/book/genre/Фантастика']">Фантастика</a>
       </button>
       <button mat-menu-item>
-        <a [routerLink]="['/api/book/genre/Фентези']">Фентези</a>
+        <a [routerLink]="['/book/genre/Фентези']">Фентези</a>
       </button>
       <button mat-menu-item>
-        <a [routerLink]="['/api/book/genre/Детектив']">Детектив</a>
+        <a [routerLink]="['/book/genre/Детектив']">Детектив</a>
       </button>
       <button mat-menu-item>
-        <a [routerLink]="['/api/book/genre/Роман']">Роман</a>
+        <a [routerLink]="['/book/genre/Роман']">Роман</a>
       </button>
     </mat-menu>
 
