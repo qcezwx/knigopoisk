@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class BookValue {
-    int value;
+    private int value;
 
     public void setValue(int value) {
         this.value = value;

@@ -12,7 +12,6 @@ import java.util.Set;
 @Table(name = "books")
 @Getter @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class Book extends AuditModel {
     @Id

@@ -1,9 +1,9 @@
 package com.knigopoisk.demo.model;
 
 public class NewBook {
-    String title;
-    String authorName;
-    String language;
+    private String title;
+    private String authorName;
+    private String language;
 
     public void setTitle(String title) {
         this.title = title;
